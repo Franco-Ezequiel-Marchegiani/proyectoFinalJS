@@ -1,3 +1,72 @@
+document.querySelector(".boton__dolar").addEventListener("click", devolverDatos())
+
+function devolverDatos(){
+    const xhttp = new XMLHttpRequest();
+
+    xhttp.open('GET','discos.json', true);
+
+    xhttp.send();
+
+    xhttp.onreadystatechange = function(){
+        if(this.readyState == 4 && this.status == 200){
+            //JSON.parse transforma el texto a json
+            //La variable precios contiene el json pasado a json y no texto
+            let precios = JSON.parse(this.responseText);
+            //console.log(precios)
+            let respuesta = document.querySelector(".discos");
+            //Se genera el res.innerhtml vacío para que comience con un valor inicial
+            respuesta.innerHTML = '';
+            for(let item of precios){
+                respuesta.innerHTML += `
+                <div class="card" style="width: 18rem;">
+                <img loading="lazy" src="${item.portada}" class="card-img-top" alt="Portada Álbum 'Queen'">
+                    <div class="card-body">
+                        <h5 class="card-title">${item.titulo}</h5>
+                        <p class="card-text">Publicación: ${item.publicacion} || Sello: ${item.sello}</p>
+                        <p class="card-price">${item.precio}</p>
+                        <p class="card-price dolarizado">${item.precioDolar}</p>
+                        <a href="${item.spotify}" target="_blank" class="btn btn-primary">Escuchar Álbum</a>
+                        <button class="btn btn-primary addCarrito" id="showCarrito">Comprar Álbum</button>
+                    </div>
+                </div>
+                
+                `
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+/*
+function ajax(){
+    const http = new XMLHttpRequest();
+    const url = "../discos.json";
+
+    http.onreadystatechange = function(){
+        //Esta condicional (readyState y status) son parámetros para controlar que se realice el llamado correctamente
+        //En caso de que se ejecute el llamado de manera efectiva, se ejecutará la condicional
+        if(this.readyState == 4 && this.status == 200){
+            console.log(this.responseText);
+            document.getElementsByClassName("card-body").innerHTML = this.responseText;//responseText devuelve valor en texto
+        }
+    }
+    http.open("GET", url);
+    http.send();
+}
+document.getElementById("boton__dolar").addEventListener("click", function(){
+    ajax();
+}) */
+
+
+
 /* Sector HTML
 <div class="buscador">
         <form class="form-inline my-2 my-lg-0" id="formulario">
@@ -8,7 +77,7 @@
 </div>
 */
 
-/* Sector JS
+/* Sector JS    
 const resultado = document.getElementsByClassName("discos");
 const formulario = document.getElementById("formulario");
 
