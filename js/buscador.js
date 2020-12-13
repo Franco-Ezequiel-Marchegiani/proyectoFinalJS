@@ -1,6 +1,7 @@
-document.querySelector(".boton__dolar").addEventListener("click", devolverDatos())
+document.querySelector(".boton__dolar").addEventListener("click", devolverDatos)
 // INICIO AJAX
-function devolverDatos(){
+function devolverDatos(e){
+    e.preventDefault();
     const xhttp = new XMLHttpRequest();
 
     xhttp.open('GET','discos.json', true);
@@ -23,10 +24,8 @@ function devolverDatos(){
                     <div class="card-body">
                         <h5 class="card-title">${item.titulo}</h5>
                         <p class="card-text">Publicación: ${item.publicacion} || Sello: ${item.sello}</p>
-                        <p class="card-price">${item.precio}</p>
-                        <p class="card-price dolarizado">${item.precioDolar}</p>
+                        <p class="card-price">${item.precioDolar}</p>
                         <a href="${item.spotify}" target="_blank" class="btn btn-primary">Escuchar Álbum</a>
-                        <button class="btn btn-primary addCarrito" id="addCarrito">Comprar Álbum</button> 
                     </div>
                 </div>
                 
