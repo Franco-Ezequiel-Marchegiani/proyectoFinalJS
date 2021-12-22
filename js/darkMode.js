@@ -86,10 +86,10 @@ function funcionDarkMode(){
     }
     //Condicional ImagenFinal
     if(fotoQueenArg == "queenArgColor"){
-        imagenQueenArg.src = "./imagenes/darkmode/queen_arg_dark.png";
+        imagenQueenArg.src = "imagenes/darkmode/queen_arg_dark.png";
         fotoQueenArg = "queenArgDark";
     } else{
-        imagenQueenArg.src = "./Imagenes/darkmode/queen_Arg.jpg";
+        imagenQueenArg.src = "imagenes/darkmode/queen_Arg.jpg";
         fotoQueenArg = "queenArgColor";
     }
 }
