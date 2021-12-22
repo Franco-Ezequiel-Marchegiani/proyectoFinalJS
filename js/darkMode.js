@@ -93,4 +93,5 @@ function funcionDarkMode(){
         fotoQueenArg = "queenArgColor";
     }
 }
+//Prueba
 // *** FIN DARK MODE ***
